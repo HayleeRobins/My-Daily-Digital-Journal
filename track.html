@@ -36,6 +36,12 @@
       transform: scale(1.05);
     }
 
+    header h2 {
+      font-size: 1.5em;
+      color: #ff9ebb;
+      margin-top: 5px;
+    }
+
     header p {
       color: #666;
       font-size: 1em;
@@ -117,14 +123,19 @@
       header h1 {
         font-size: 1.5em;
       }
+      header h2 {
+        font-size: 1.2em;
+      }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <!-- Title clickable to go back to homepage -->
-    <h1 onclick="window.location.href='index.html'">📒 My Daily Digital Journal</h1>
+    <!-- Clickable main title -->
+    <h1 onclick="window.location.href='home.html'">🌷 My Daily Digital Journal 🌷</h1>
+    <!-- Page subtitle -->
+    <h2>📒 Daily Tracker</h2>
     <p>Log your food, workouts, water, and mood 💖</p>
   </header>
 
@@ -173,7 +184,6 @@
   </footer>
 
   <script>
-    // Load saved logs from localStorage
     window.onload = function() {
       displayLogs('foodLogs', 'food');
       displayLogs('workoutLogs', 'workout');
@@ -233,3 +243,4 @@
   </script>
 </body>
 </html>
+
