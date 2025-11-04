@@ -16,7 +16,6 @@
       --text-accent: #ff7b9c;
     }
 
-    /* Base Page */
     body {
       margin: 0;
       font-family: 'Poppins', 'Cambria', 'Georgia', serif;
@@ -42,6 +41,7 @@
       margin-top: 2rem;
       position: relative;
       animation: float 4s ease-in-out infinite;
+      z-index: 3;
     }
 
     @keyframes float {
@@ -103,35 +103,6 @@
       transform: scale(1.05);
     }
 
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background-color: var(--rose);
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      width: 70%;
-      max-width: 230px;
-      height: 55px;
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: inherit;
-      margin: 0.5rem 0;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
-    }
-
-    .btn:hover {
-      background-color: #ffa6bd;
-      transform: scale(1.07);
-      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.6);
-    }
-
-    .sl {
-      text-align: center;
-    }
-
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -140,7 +111,6 @@
       padding-bottom: 1rem;
     }
 
-    /* Floating pastel dots (like baby’s breath!) */
     .bg-decor {
       position: fixed;
       top: 0;
@@ -167,21 +137,65 @@
       100% { transform: translateY(0); opacity: 1; }
     }
 
-    /* Make sure it's perfect on all screens */
+    /* Hamburger menu */
+    .hamburger {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 35px;
+      height: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 4;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: var(--text-accent);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Menu panel */
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: var(--pink);
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      border-radius: 0 0 0 20px;
+      transition: right 0.3s ease;
+      padding-top: 4rem;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .menu a {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      color: var(--text-accent);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .menu a:hover {
+      color: #fff;
+    }
+
+    .menu.open {
+      right: 0;
+    }
+
     @media (max-width: 600px) {
-      section {
-        padding: 1.2rem;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-        padding: 1rem;
-      }
-
-      .btn {
-        width: 80%;
-        height: 50px;
-      }
+      section { padding: 1.2rem; }
+      h1 { font-size: 1.8rem; padding: 1rem; }
     }
   </style>
 </head>
@@ -193,6 +207,21 @@
     <div class="dot" style="top:60%; left:40%; animation-delay:4s;"></div>
     <div class="dot" style="top:80%; left:10%; animation-delay:1s;"></div>
     <div class="dot" style="top:50%; left:90%; animation-delay:3s;"></div>
+  </div>
+
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Menu links -->
+  <div class="menu" id="menu">
+    <a href="journal.html">Journal</a>
+    <a href="habits.html">Habits & To-Do</a>
+    <a href="meditations.html">Meditations</a>
+    <a href="track.html">Tracker</a>
   </div>
 
   <h1>My Daily Digital Journal 🌸</h1>
@@ -213,12 +242,6 @@
     </ul>
   </section>
 
-  <section class="sl">
-    <h2>Welcome, Sunshine! ☀️</h2>
-    <a href="signUp.html"><button class="btn">Sign Up</button></a><br>
-    <a href="signIn.html"><button class="btn">Sign In</button></a>
-  </section>
-
   <section>
     <h2>🌼 Reviews From Happy Users *for preview only NOT real reviews</h2>
     <p>⭐ “This app makes journaling feel like a cozy self-care ritual!”</p>
@@ -230,6 +253,13 @@
     © 2025 My Daily Digital Journal — A helloHaylee Creation 🌸 All rights reserved.
   </footer>
 
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('open');
+    }
+  </script>
+
 </body>
 </html>
+
 
