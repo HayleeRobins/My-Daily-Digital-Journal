@@ -1,146 +1,235 @@
-<!--This page will have introduction of the app and have the option to sign up or log in
-it will give information about the web app, why I decided to do it, and other things like that
-it will have "happy" colors to boost the mood of the user.-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Daily Digital Journal</title>
+  <style>
+    :root {
+      --pink: #ffdce5;
+      --yellow: #fff8cc;
+      --blue: #eaf4ff;
+      --green: #e4ffe9;
+      --lavender: #f6e9ff;
+      --rose: #ffc3d7;
+      --text-dark: #5c4b51;
+      --text-accent: #ff7b9c;
+    }
+
+    /* Base Page */
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Cambria', 'Georgia', serif;
+      background: linear-gradient(180deg, var(--pink), var(--blue), var(--lavender));
+      background-attachment: fixed;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 50px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--text-accent);
+      text-shadow: 1px 1px 2px #ffd2dc;
+      box-shadow: 0 6px 20px rgba(255, 182, 193, 0.3);
+      margin-top: 2rem;
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    section {
+      background-color: white;
+      border-radius: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      max-width: 900px;
+      width: 90%;
+      margin: 1.5rem auto;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    section:hover {
+      transform: scale(1.01);
+      box-shadow: 0 8px 25px rgba(255, 192, 203, 0.3);
+    }
+
+    h2 {
+      color: var(--text-accent);
+      text-align: center;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.7;
+      color: #6a6063;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    ul li {
+      margin: 0.6rem 0;
+      background: var(--yellow);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 3px 10px rgba(255, 224, 150, 0.4);
+      transition: transform 0.2s;
+    }
+
+    ul li:hover {
+      transform: scale(1.05);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      width: 70%;
+      max-width: 230px;
+      height: 55px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+    }
+
+    .btn:hover {
+      background-color: #ffa6bd;
+      transform: scale(1.07);
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.6);
+    }
+
+    .sl {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #8b8b8b;
+      margin-top: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    /* Floating pastel dots (like baby’s breath!) */
+    .bg-decor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      animation: floatDots 8s ease-in-out infinite;
+    }
+
+    @keyframes floatDots {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-30px); opacity: 0.8; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Make sure it's perfect on all screens */
+    @media (max-width: 600px) {
+      section {
+        padding: 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        padding: 1rem;
+      }
+
+      .btn {
+        width: 80%;
+        height: 50px;
+      }
+    }
+  </style>
 </head>
-<style>
-  body{
-    background-color: rgb(255, 255, 232);
-  }
+<body>
 
-  h1{
-    color: rgb(255, 255, 158);
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    text-align: center;
-    background-color: white;
-    padding: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 100px;
-  }
+  <div class="bg-decor">
+    <div class="dot" style="top:10%; left:20%; animation-delay:0s;"></div>
+    <div class="dot" style="top:30%; left:70%; animation-delay:2s;"></div>
+    <div class="dot" style="top:60%; left:40%; animation-delay:4s;"></div>
+    <div class="dot" style="top:80%; left:10%; animation-delay:1s;"></div>
+    <div class="dot" style="top:50%; left:90%; animation-delay:3s;"></div>
+  </div>
 
-.outlined-text {
-  color: white; /* Text color */
-  text-shadow: 
-    2px 2px 0 rgb(255, 160, 160), 
-   -2px 2px 0 rgb(255, 160, 160), 
-    2px -2px 0 rgb(255, 160, 160), 
-   -2px -2px 0 rgb(255, 160, 160); /* Creates the outline */
-  font-size: 48px; /* Adjust as needed */
-}
+  <h1>My Daily Digital Journal 🌸</h1>
 
-h2{
-  color: rgb(255, 160, 160);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  text-align: center;
-}
+  <section>
+    <h2>What is My Daily Digital Journal?</h2>
+    <p><em>My Daily Digital Journal</em> is your soft, cozy space to journal, plan, and care for your heart and mind. You can write your thoughts, track your habits, plan your goals, and reflect on your day — all in one dreamy little place made just for you. 💗</p>
+  </section>
 
-p{
-  color: rgb(124, 124, 124);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  text-align: center;
-}
+  <section>
+    <h2>✨ Features You'll Love!</h2>
+    <ul>
+      <li>📝 Daily Journal Entries</li>
+      <li>✅ Task & To-Do Tracking</li>
+      <li>🥗 Food, Water & Wellness Logs</li>
+      <li>💖 Encouraging Messages</li>
+      <li>🌷 All-in-One Simplicity</li>
+    </ul>
+  </section>
 
-.about{
-  background-color: rgb(243, 246, 255);
-  border-radius: 40px;
-}
+  <section class="sl">
+    <h2>Welcome, Sunshine! ☀️</h2>
+    <a href="signUp.html"><button class="btn">Sign Up</button></a><br>
+    <a href="signIn.html"><button class="btn">Sign In</button></a>
+  </section>
 
-ul{
-  text-align: center;
-  font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: rgb(124, 124, 124);
-  list-style-type: none;
-}
+  <section>
+    <h2>🌼 Reviews From Happy Users *for preview only NOT real reviews</h2>
+    <p>⭐ “This app makes journaling feel like a cozy self-care ritual!”</p>
+    <p>⭐ “The pastel colors instantly calm me.”</p>
+    <p>⭐ “It’s like having a best friend that listens.”</p>
+  </section>
 
-.list{
-  background-color: rgb(255, 230, 255);
-  border-radius: 40px;
-}
+  <footer>
+    © 2025 My Daily Digital Journal — A helloHaylee Creation 🌸 All rights reserved.
+  </footer>
 
-.review{
-  background-color: rgb(219, 255, 219);
-  border-radius: 40px;
-}
-
-a:hover{
-  color: rgb(255, 180, 110);
-}
-
-a{
-  text-decoration: none;
-  color: rgb(103, 0, 0);
-}
-
-.ls{
-  color: rgb(255, 208, 0);
-}
-
-button{
-  background-color: rgb(255, 192, 207);
- border: none;
-  border-radius: 100px;
-   width: 200px; 
-  height: 70px; 
-  font-size: 16px; 
-  padding: 10px 20px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.btn:hover{
-    background-color: rgb(255, 107, 107);
-}
-</style>
-<section class="outlined-text">
-  <h1><strong>My Daily Digital Journal</strong></h1>
-</section>
-
-<section class="about">
-  <h2><strong>What is <em>My Daily Digital Journal</em>?</strong></h2>
-  <p><em>My Daily Digital Journal</em> is your all-in-one space to organize your life, track your habits, and take care of your mind. Whether you’re writing out your thoughts, planning your day, logging your meals and workouts, tracking your water, or keeping up with school and work goals—this cozy little app is here to help you stay grounded and inspired.
-
-Designed with love and care, this web-app (and future downloadable app!) combines journaling, to-do lists, motivational tools, and wellness tracking—all in one place. You’ll also find thoughtful features based on real psychology research to help boost your mood and support your mental well-being. 🧠💖
-
-I created this because I know what it’s like to feel overwhelmed, to not have support, or to not be able to afford expensive tools. That’s why My Daily Digital Journal is affordable at just $10.99, with optional customizations coming in the future.
-
-Your data is saved securely, and you’ll be able to do so much—without needing a bunch of separate apps. As I grow and learn (even taking courses like Yale’s Psychology course 💻🧠), I’ll keep adding meaningful features that truly help people feel better, stay organized, and shine in their own daily lives.
-
-Because you deserve a tool that supports you. 💗
-  </p>
-</section>
-
-<section class="list">
-  <h2>✨ Features You'll Love!</h2>
-  <ul >
-  <li>📝 Daily Journal Entries</li>
-  <li>✅ Task & To-Do Tracking</li>
-  <li>🥗 Food, Water & Wellness Logs</li>
-  <li>💖 Encouraging Messages</li>
-  <li>📦 All-in-One Simplicity</li>
-</ul>
-</section>
-
-<section class="sl">
-  <h2>Welcome To or Welcome Back!👋</h2>
-<h2><a href="signUp.html"><button class="btn">Sign Up</a></button></h2>
-</section>
-
-<section class="sl">
-  <h2><a href="signIn.html"><button class="btn">Sign In</a></button></h2>
-</section>
-
-<section class="review">
-  <h2>Customer Reviews</h2>
-</section>
-
-<footer>
-  <p style="text-align:center; font-size: 14px; color: #999;">© 2025 My Daily Digital Journal — A helloHaylee creation. All rights reserved.
-</p>
-</footer>
-
+</body>
 </html>
+
