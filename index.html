@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Daily Digital Journal | Tracker</title>
+  <title>My Daily Digital Journal | Home</title>
 
   <style>
     body {
+      background: linear-gradient(to bottom right, #ffe6f2, #fff9e6, #e6faff);
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #ffe6f2, #fff9e6, #e6faff);
       color: #444;
       display: flex;
       flex-direction: column;
@@ -20,14 +20,14 @@
 
     header {
       text-align: center;
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
 
     header h1 {
-      font-size: 2em;
-      color: #ff9ebb;
+      font-size: 2.2em;
+      color: #ffb3c6;
       text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.4);
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -41,43 +41,71 @@
       font-size: 1em;
     }
 
-    main {
-      width: 90%;
-      max-width: 900px;
+    nav {
+      background-color: white;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+      border-radius: 40px;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 30px;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ff9ebb;
+      background-color: #fff0f5;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      background-color: #ffb3c6;
+      color: white;
+      box-shadow: 0 2px 8px rgba(255, 182, 193, 0.5);
+    }
+
+    main {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
+      padding: 0 20px;
       margin-bottom: 40px;
     }
 
-    .tracker-card {
+    .card {
       background-color: white;
-      border-radius: 25px;
+      border-radius: 30px;
       padding: 25px;
-      box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
-      transition: transform 0.3s ease;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .tracker-card:hover {
+    .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
     }
 
-    h2 {
+    .card h2 {
       color: #ff9ebb;
+      font-size: 1.5em;
       margin-bottom: 15px;
     }
 
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 20px;
-      border: 1px solid #ffdce5;
+    .card p {
+      color: #666;
+      font-size: 1em;
       margin-bottom: 15px;
-      font-family: 'Poppins', sans-serif;
     }
 
-    button {
+    .card a button {
       background-color: #ffe6f2;
       color: #ff6699;
       border: none;
@@ -87,20 +115,13 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-family: 'Poppins', sans-serif;
+      text-decoration: none;
     }
 
-    button:hover {
+    .card a button:hover {
       background-color: #ffb3c6;
       color: white;
       box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4);
-    }
-
-    .log-entry {
-      background-color: #fff0f5;
-      padding: 10px 15px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-      color: #444;
     }
 
     footer {
@@ -113,9 +134,31 @@
       font-size: 0.9em;
     }
 
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.5em;
+        font-size: 1.8em;
+      }
+
+      nav a {
+        font-size: 0.9em;
+        padding: 8px 15px;
+      }
+
+      .card h2 {
+        font-size: 1.3em;
+      }
+
+      .card p {
+        font-size: 0.9em;
       }
     }
   </style>
@@ -123,113 +166,47 @@
 
 <body>
   <header>
-    <!-- Title clickable to go back to homepage -->
-    <h1 onclick="window.location.href='index.html'">📒 My Daily Digital Journal</h1>
-    <p>Log your food, workouts, water, and mood 💖</p>
+    <!-- Clickable title to go back to homepage -->
+    <h1 class="floating" onclick="window.location.href='home.html'">🌷 My Daily Digital Journal 🌷</h1>
+    <p>Welcome back! Let’s make today beautiful, peaceful, and productive. 💗</p>
   </header>
 
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="journal.html">Journal</a>
+    <a href="habits.html">Habits</a>
+    <a href="track.html">Mood</a>
+    <a href="meditations.html">Meditations</a>
+  </nav>
+
   <main>
-    <!-- Food Tracker -->
-    <div class="tracker-card">
-      <h2>🥗 Food Log</h2>
-      <input type="text" id="foodInput" placeholder="What did you eat today?" />
-      <button onclick="addFood()">Add Food</button>
-      <div id="foodLogs"></div>
+    <div class="card">
+      <h2>🩷 Mood Tracker</h2>
+      <p>Log your emotions and see patterns to boost your mental wellness.</p>
+      <a href="track.html"><button>Track Mood</button></a>
     </div>
 
-    <!-- Workout Tracker -->
-    <div class="tracker-card">
-      <h2>🏋️ Workout Log</h2>
-      <input type="text" id="workoutInput" placeholder="What workout did you do?" />
-      <button onclick="addWorkout()">Add Workout</button>
-      <div id="workoutLogs"></div>
+    <div class="card">
+      <h2>💜 Daily Habits</h2>
+      <p>Stay on top of healthy routines with our easy habit tracker.</p>
+      <a href="habits.html"><button>View Habits</button></a>
     </div>
 
-    <!-- Water Tracker -->
-    <div class="tracker-card">
-      <h2>💧 Water Intake</h2>
-      <input type="number" id="waterInput" placeholder="Cups of water today" min="0" />
-      <button onclick="addWater()">Add Water</button>
-      <div id="waterLogs"></div>
+    <div class="card">
+      <h2>💛 Mini Meditations</h2>
+      <p>Take a moment to breathe and reset your mind with short meditations.</p>
+      <a href="meditations.html"><button>Start Now</button></a>
     </div>
 
-    <!-- Mood Tracker -->
-    <div class="tracker-card">
-      <h2>😊 Mood Tracker</h2>
-      <select id="moodInput">
-        <option value="">Select your mood</option>
-        <option value="Happy 😊">Happy 😊</option>
-        <option value="Calm 😌">Calm 😌</option>
-        <option value="Tired 😴">Tired 😴</option>
-        <option value="Sad 😔">Sad 😔</option>
-      </select>
-      <button onclick="addMood()">Add Mood</button>
-      <div id="moodLogs"></div>
+    <div class="card">
+      <h2>💙 Journal</h2>
+      <p>Write out your thoughts and reflect on your day in your cozy space.</p>
+      <a href="journal.html"><button>Open Journal</button></a>
     </div>
   </main>
 
   <footer>
-    Made with 💖 by Haylee | © 2025 My Daily Digital Journal
+    <p>Made with 💖 by Haylee | © 2025 My Daily Digital Journal</p>
   </footer>
-
-  <script>
-    // Load saved logs from localStorage
-    window.onload = function() {
-      displayLogs('foodLogs', 'food');
-      displayLogs('workoutLogs', 'workout');
-      displayLogs('waterLogs', 'water');
-      displayLogs('moodLogs', 'mood');
-    }
-
-    function addFood() {
-      const val = document.getElementById('foodInput').value;
-      if(!val) return;
-      saveLog('food', val);
-      displayLogs('foodLogs', 'food');
-      document.getElementById('foodInput').value = '';
-    }
-
-    function addWorkout() {
-      const val = document.getElementById('workoutInput').value;
-      if(!val) return;
-      saveLog('workout', val);
-      displayLogs('workoutLogs', 'workout');
-      document.getElementById('workoutInput').value = '';
-    }
-
-    function addWater() {
-      const val = document.getElementById('waterInput').value;
-      if(!val) return;
-      saveLog('water', val + ' cup(s)');
-      displayLogs('waterLogs', 'water');
-      document.getElementById('waterInput').value = '';
-    }
-
-    function addMood() {
-      const val = document.getElementById('moodInput').value;
-      if(!val) return;
-      saveLog('mood', val);
-      displayLogs('moodLogs', 'mood');
-      document.getElementById('moodInput').value = '';
-    }
-
-    function saveLog(key, value) {
-      let logs = JSON.parse(localStorage.getItem(key)) || [];
-      logs.push(value);
-      localStorage.setItem(key, JSON.stringify(logs));
-    }
-
-    function displayLogs(containerId, key) {
-      const container = document.getElementById(containerId);
-      const logs = JSON.parse(localStorage.getItem(key)) || [];
-      container.innerHTML = '';
-      logs.forEach((log, index) => {
-        const div = document.createElement('div');
-        div.className = 'log-entry';
-        div.textContent = `${index + 1}. ${log}`;
-        container.appendChild(div);
-      });
-    }
-  </script>
 </body>
 </html>
